@@ -1133,8 +1133,9 @@ static jfes_status_t jfes_create_node(jfes_tokens_data_t *tokens_data, jfes_valu
             return jfes_no_memory;
         }
 
+        value->data.array_val->count = token->size;
+
         if (token->size > 0) {
-            value->data.array_val->count = token->size;
             value->data.array_val->items = (jfes_value_t**)jfes_malloc(token->size * sizeof(jfes_value_t*));
             if (!value->data.array_val->items) {
                 jfes_free(value->data.array_val);
@@ -1167,8 +1168,9 @@ static jfes_status_t jfes_create_node(jfes_tokens_data_t *tokens_data, jfes_valu
             return jfes_no_memory;
         }
 
+        value->data.object_val->count = token->size;
+
         if (token->size > 0) {
-            value->data.object_val->count = token->size;
             value->data.object_val->items = (jfes_object_map_t**)jfes_malloc(token->size * sizeof(jfes_object_map_t*));
             if (!value->data.object_val->items) {
                 jfes_free(value->data.object_val);
